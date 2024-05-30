@@ -2,6 +2,7 @@
 import Product from '../models/productModel.js';
 import path from 'path';
 import fs from 'fs';
+import "dotenv/config"
 
 // Controller function to get all products
 export const getAllProducts = async (req, res) => {
@@ -140,7 +141,7 @@ export const updateProduct = async (req, res) => {
             fs.mkdirSync(uploadDir, { recursive: true });
         }
 
-        const url = `${req.protocol}://${req.get("host")}/images/${fileName}`;
+        const url = `${process.env.ORIGIN}/images/${fileName}`;
 
         file.mv(path.join(uploadDir, fileName), async (err) => {
             if (err) {

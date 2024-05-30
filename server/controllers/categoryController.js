@@ -1,6 +1,7 @@
 import Category from '../models/categoryModel.js';
 import path from 'path';
 import fs from 'fs';
+import "dotenv/config"
 
 export const getAllCategory = async (request, response) => {
     try {
@@ -62,7 +63,7 @@ export const saveCategory = async(request, response) => {
         fs.mkdirSync(uploadDir, { recursive: true });
     }
 
-    const url = `${request.protocol}://${request.get("host")}/categoryImages/${fileName}`;
+    const url = `${process.env.ORIGIN}/categoryImages/${fileName}`;
 
     file.mv(path.join(uploadDir, fileName), async (err) => {
         if (err) {

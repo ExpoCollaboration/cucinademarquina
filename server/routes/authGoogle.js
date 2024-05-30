@@ -1,7 +1,8 @@
 import express from 'express';
 import passport from 'passport';
+import "dotenv/config"
 
-const CLIENT_URL = "https://versatily.website";
+const CLIENT_URL = process.env.CLIENT_URL;
 
 const router = express.Router();
 
