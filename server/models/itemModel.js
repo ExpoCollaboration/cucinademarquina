@@ -46,8 +46,8 @@ const Item = database.define('item', {
     freezeTableName: true,
 });
 
-(async () => {
-    await database.sync();
-})();
+// (async () => {
+//     await database.sync();
+// })();
 
 export default Item;

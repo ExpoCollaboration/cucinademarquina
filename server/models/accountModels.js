@@ -45,8 +45,8 @@ const Accounts = database.define('accounts', {
     timestamps: true
 });
 
-(async () => {
-    await database.sync();
-})();
+// (async () => {
+//     await database.sync();
+// })();
 
 export default Accounts;

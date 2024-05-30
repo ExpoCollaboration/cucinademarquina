@@ -28,8 +28,8 @@ const Category = database.define('category', {
     freezeTableName: true,
 });
 
-(async () => {
-    await database.sync();
-})();
+// (async () => {
+//     await database.sync();
+// })();
 
 export default Category;

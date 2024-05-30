@@ -35,8 +35,8 @@ const Transaction = database.define('transaction', {
     freezeTableName: true,
 });
 
-(async () => {
-    await database.sync();
-})();
+// (async () => {
+//     await database.sync();
+// })();
 
 export default Transaction;
