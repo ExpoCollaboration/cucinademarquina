@@ -1,0 +1,143 @@
+:root {
+  /* Button */
+
+  --cancel-button: #ff4742;
+  --submit-button: #2cbc63;
+
+  /* Hover button */
+  --light-cancel-button: #db2822;
+  --light-submit-button: #15d960;
+}
+
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  gap: 10px;
+}
+
+.category-container .category-row {
+  border: solid 1px var(--secondary);
+  height: 250px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--poppins), sans-serif;
+  border-radius: 25px;
+  margin: 8px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.category-row img {
+  background-attachment: fixed;
+  width: 50px;
+  height: 50px;
+  padding-right: 10px;
+}
+
+.category-container .add-Option {
+  font-size: 100px;
+  border: dashed 3px;
+  height: 250px;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--poppins), sans-serif;
+  border-radius: 25px;
+  margin: 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* Modal CSS */
+
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.btn-modal-category {
+  padding: 10px 20px;
+  display: block;
+  margin: 100px auto 10px;
+  font-size: 18px;
+  float: right;
+}
+
+.modal-category,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+
+.modal-content-category {
+  font-family: var(--poppins), sans-serif;
+  position: absolute;
+  top: 55%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: var(--tertiary);
+  padding: 40px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 800px;
+  min-width: 300px;
+  max-height: 750px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Modal Button */
+
+.modal-content-category .category-btn-container {
+  display: flex;
+  gap: 10px;
+}
+
+.category-btn-container .category-btn-cancel {
+  background-color: var(--cancel-button);
+  color: var(--tertiary);
+  border-radius: 10px;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.category-btn-container .category-btn-submit {
+  background-color: var(--submit-button);
+  color: var(--tertiary);
+  border-radius: 10px;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.category-btn-cancel:hover {
+  background-color: var(--light-cancel-button);
+}
+
+.category-btn-submit:hover {
+  background-color: var(--light-submit-button);
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 7px;
+}

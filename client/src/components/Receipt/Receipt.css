@@ -1,0 +1,97 @@
+.receipt-container {
+  border: 1px solid #ddd;
+  height: auto;
+  width: 400px;
+  border-radius: 10px;
+  margin: 40px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Add this to make the container scrollable */
+}
+
+.logo-text {
+  font-family: var(--poppins);
+  color: #79ac78;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.receipt-head {
+  border-top: 3px dashed #ddd;
+  padding: 10px;
+}
+
+.receipt-head table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.receipt-head th {
+  font-weight: 400;
+  font-family: var(--poppins);
+  background: none;
+  color: #000;
+  text-align: center;
+  padding: 10px;
+}
+
+.orders {
+  padding: 20px;
+  overflow-y: auto; /* Add this to make the orders section scrollable */
+}
+
+.orders table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders td {
+  font-family: var(--poppins);
+  padding: 10px;
+  text-align: center;
+}
+
+.total {
+  padding: 10px;
+  border-top: 3px dashed #ddd;
+}
+
+.total table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.total th {
+  background: none;
+  color: #000;
+  font-weight: 400;
+  text-align: left;
+  padding: 10px;
+}
+
+.total td {
+  padding: 10px;
+  text-align: right;
+}
+
+.receipt-footer {
+  padding: 10px;
+  border-top: 3px dashed #ddd;
+  text-align: center;
+}
+
+.receipt-number {
+  text-align: right;
+  color: #777;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.time {
+  text-align: right;
+  color: #777;
+  font-size: 14px;
+  margin-top: 10px;
+  display: block;
+}
