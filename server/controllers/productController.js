@@ -66,9 +66,7 @@ export const saveProduct = async (req, res) => {
         fs.mkdirSync(uploadDir, { recursive: true });
     }
 
-    const url = `${req.protocol}://${req.get("host")}/productImages/${fileName}`;
-    // const url = `${req.protocol}://ef96a2c69c75dae0d7981c87d36b65a3.serveo.net/productImages/${fileName}`;
-
+    const url = `${process.env.ORIGIN}/productImages/${fileName}`;
 
     file.mv(path.join(uploadDir, fileName), async (err) => {
         if (err) {
