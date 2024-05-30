@@ -10,7 +10,7 @@ passport.use(
     new GoogleStrategy({
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
-        callbackURL: `https:/api.versatily.website/auth/google/callback`
+        callbackURL: process.env.GOOGLE_CLIENT_CALLBACK
     },
     function(accessToken, refreshToken, profile, done) {
         // Save profile and tokens in session
