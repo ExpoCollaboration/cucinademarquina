@@ -132,6 +132,7 @@ app.use("/categories", CategoryRoutes);
 app.use("/items", ItemsRoute);
 app.use("/orders", OrderRoutes);
 app.use("/", AccountRoutes);
+app.get('/health', () => "OK");
 
 // Auto google
 app.use('/auth', AuthRoutes);
