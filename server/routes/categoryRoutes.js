@@ -2,7 +2,7 @@ import {
     getAllCategory,
     saveCategory,
     getCategoryById
-} from '../controllers/CategoryController.js';
+} from '../controllers/categoryController.js';
 import express from 'express';
 
 const router = express.Router();
