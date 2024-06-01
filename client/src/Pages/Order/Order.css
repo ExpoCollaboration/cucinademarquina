@@ -263,6 +263,7 @@
 }
 
 .order-container .product-row {
+  max-width: 350px;
   background-color: var(--white);
   border: solid 1px #d9d9d9;
   display: block;
@@ -473,27 +474,9 @@
   .header-hero h3 {
     font-size: .5rem;
   }
-}
-
-@media (max-width: 225px) {
-  .form-submit-query {
-    display: none;
-  }
-
-  .brand .logo img {
-    display: none;
-  }
-
-  .header-hero h1 {
-    font-size: .5rem;
-  }
-
-  .header-hero h3 {
-    font-size: .3rem;
-  }
 
   .order-container .product-row {
-    width: 150px;
+    max-width: 150px;
   }
 
   .category-order-container .category-order-row {
@@ -502,5 +485,21 @@
 
   .header-hero {
     display: none;
+  }
+
+
+  .brand .logo img {
+    display: none;
+  }
+}
+
+@media (max-width: 225px) {
+
+  .header-hero h1 {
+    font-size: .5rem;
+  }
+
+  .header-hero h3 {
+    font-size: .3rem;
   }
 }
