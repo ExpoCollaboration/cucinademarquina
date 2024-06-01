@@ -180,7 +180,7 @@
 
 .order-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 25%));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
 .text-order-container {
@@ -444,9 +444,6 @@
 }
 
 @media (max-width: 400px) {
-  .order-container {
-    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  }
   #order-content nav .logo h1 {
     width: 50px;
     white-space: nowrap;
@@ -457,23 +454,41 @@
 }
 
 @media (max-width: 320px) {
-
-  .order-container .product-row {
-    margin: 5px;
-    padding: 10px;
-    width: 175px;
-  }
-
-  .order-container {
-    padding: 0;
-    margin: 0;
-  }
-
   .header-hero h1 {
     font-size: 1rem;
   }
 
   .header-hero h3 {
     font-size: .5rem;
+  }
+}
+
+@media (max-width: 225px) {
+  .form-submit-query {
+    display: none;
+  }
+
+  .brand .logo img {
+    display: none;
+  }
+
+  .header-hero h1 {
+    font-size: .5rem;
+  }
+
+  .header-hero h3 {
+    font-size: .3rem;
+  }
+
+  .order-container .product-row {
+    width: 150px;
+  }
+
+  .category-order-container .category-order-row {
+    width: 50px;
+  }
+
+  .header-hero {
+    display: none;
   }
 }
