@@ -7,6 +7,7 @@ import axios from 'axios';
 import CartSidebar from '../../components/CartSideBar/CartSideBar.jsx';
 import Logo from '../../assets/Icons/cucina-de-marquina-logo.png';
 import { API_URL } from '../../config.js';
+import profileImg from '../../assets/img/profile.jpg';
 
 const Order = ({ account, normalAccount }) => {
   useEffect(() => {
@@ -278,7 +279,7 @@ const Order = ({ account, normalAccount }) => {
                 {account && account.profile && account.profile.photos && account.profile.photos.length > 0 ? (
                   <img src={account.profile.photos[0].value} width={35} height={35} />
                 ) : (
-                  <i className='bx bx-user'></i>
+                  <i id='icon' className='bx bx-user'></i>
                 )}
               </div>
               <div className="profile-content-name">
@@ -351,7 +352,7 @@ const Order = ({ account, normalAccount }) => {
                 <div key={index} className="product-row">
                   <div className="product-info">
                     <img
-                      src={product.url}
+                      src={profileImg}
                       alt="product"
                       width={100}
                       height={100}
@@ -377,15 +378,15 @@ const Order = ({ account, normalAccount }) => {
                           +{' '}
                         </button>
                       </div>
+                      <div
+                        className="add-cart-container"
+                        onClick={() => addToCart(product)}
+                      >
+                        <button className="add-cart-btn">
+                          <i className="bx bx-cart"></i>
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    className="add-cart-container"
-                    onClick={() => addToCart(product)}
-                  >
-                    <button className="add-cart-btn">
-                      <i className="bx bx-cart"></i>
-                    </button>
                   </div>
                 </div>
               ))
