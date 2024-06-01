@@ -180,8 +180,8 @@
 
 .order-container {
   padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .text-order-container {
@@ -264,10 +264,10 @@
 }
 
 .order-container .product-row {
-  max-width: 350px;
   background-color: var(--white);
+  max-width: 350px;
+  min-width: 350px;
   border: solid 1px #d9d9d9;
-  display: block;
   align-items: center;
   font-family: var(--poppins), sans-serif;
   border-radius: 10px;

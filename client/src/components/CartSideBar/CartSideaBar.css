@@ -126,7 +126,7 @@
 
 .cart-sidebar .order-container {
   display: flex;
-  justify-content: center;
+  justify-content: center;  
 }
 
 .order-container .generate-order {
