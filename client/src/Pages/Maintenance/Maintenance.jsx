@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */
+ 
 
 import './Maintenance.css';
 import { Link } from 'react-router-dom';
@@ -16,7 +16,7 @@ const Maintenance = () => {
           <div className="maintenance-text-sentences">
             <p>Please stay tune for more upcoming features of this system</p>
             <p>
-              <Link to="/login">Return to Home</Link>
+              <Link to="/orders">Return to Home</Link>
             </p>
           </div>
         </div>

@@ -13,7 +13,7 @@ const Forbidden = () => {
           </div>
           <div className="forbidden-text-sentences">
             <p>You don't have access to this page.</p>
-            <p><Link to="/login">Return to Home</Link></p>
+            <p><Link to="/orders">Return to Home</Link></p>
           </div>
         </div>
       </div>
