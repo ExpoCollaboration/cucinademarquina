@@ -179,9 +179,9 @@
 /* Main */
 
 .order-container {
-  max-width: 350px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 0;
+  grid-template-columns: auto auto auto auto;
 }
 
 .text-order-container {
@@ -443,7 +443,6 @@
   .product-info {
     width: 100%;
     display: block;
-    gap: 10px;
   }
 
   .product-info .info {
