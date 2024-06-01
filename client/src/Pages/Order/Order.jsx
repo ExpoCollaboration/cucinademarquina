@@ -7,7 +7,6 @@ import axios from 'axios';
 import CartSidebar from '../../components/CartSideBar/CartSideBar.jsx';
 import Logo from '../../assets/Icons/cucina-de-marquina-logo.png';
 import { API_URL } from '../../config.js';
-import profileImg from '../../assets/img/ian-pogi.jpg';
 
 const Order = ({ account, normalAccount }) => {
   useEffect(() => {
@@ -352,7 +351,7 @@ const Order = ({ account, normalAccount }) => {
                 <div key={index} className="product-row">
                   <div className="product-info">
                     <img
-                      src={profileImg}
+                      src={product.url}
                       alt="product"
                     />
                     <div className="info">

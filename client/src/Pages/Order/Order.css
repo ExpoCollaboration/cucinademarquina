@@ -180,8 +180,7 @@
 
 .order-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 25%));
 }
 
 .text-order-container {
@@ -245,10 +244,6 @@
   font-family: var(--poppins);
   font-size: 1.5rem;
   color: var(--primary);
-}
-
-.order-container .product-row {
-  display: block
 }
 
 .product-info {
