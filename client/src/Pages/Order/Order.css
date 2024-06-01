@@ -179,6 +179,7 @@
 /* Main */
 
 .order-container {
+  max-width: 350px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
