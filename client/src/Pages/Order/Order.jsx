@@ -353,8 +353,6 @@ const Order = ({ account, normalAccount }) => {
                     <img
                       src={product.url}
                       alt="product"
-                      width={292}
-                      height={194}
                     />
                     <div className="info">
                       <h2 className="product-text-name">{product.name}</h2>

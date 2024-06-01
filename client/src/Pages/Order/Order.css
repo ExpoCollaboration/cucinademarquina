@@ -180,7 +180,7 @@
 
 .order-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .text-order-container {
@@ -274,10 +274,22 @@
   cursor: pointer;
 }
 
+.product-info {
+  overflow: hidden;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
 .product-info img {
   width: 100%;
-  border-radius: 10px;
-  object-fit: contain;
+  height: 150px;
+  object-fit: cover;
+  transition: 0.4s;
+  border-radius: 20px;
+}
+
+.product-info:hover img {
+  transform: scale(1.11);
 }
 
 .order-container .text-message-order {
