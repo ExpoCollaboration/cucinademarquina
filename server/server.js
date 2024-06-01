@@ -141,5 +141,5 @@ app.use('/auth', AuthRoutes);
 const port = 3001;
 
 app.listen(port, () => {
-    console.log(`Server in ${process.env.NODE_ENV} mode, listening on *:${port}`);
+    console.log(`Server listening on ${port}`);
 });
