@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
-import profileImage from '../../assets/img/profile.jpg';
 import Logo from '../../assets/Icons/cucina-de-marquina-logo.png';
 import { API_URL } from '../../config.js';
 

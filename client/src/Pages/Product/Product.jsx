@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import profileImage from '../../assets/img/profile.jpg';
 import Logo from '../../assets/Icons/cucina-de-marquina-logo.png';
 import { API_URL } from '../../config.js';
 

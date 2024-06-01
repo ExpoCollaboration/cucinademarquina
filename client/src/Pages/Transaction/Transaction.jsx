@@ -2,7 +2,6 @@ import './Transaction.css';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import profileImage from '../../assets/img/profile.jpg';
 import Logo from '../../assets/Icons/cucina-de-marquina-logo.png';
 import {API_URL} from '../../config.js';
 
