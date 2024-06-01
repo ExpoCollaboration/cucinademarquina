@@ -7,7 +7,7 @@ import axios from 'axios';
 import CartSidebar from '../../components/CartSideBar/CartSideBar.jsx';
 import Logo from '../../assets/Icons/cucina-de-marquina-logo.png';
 import { API_URL } from '../../config.js';
-import profileImg from '../../assets/img/profile.jpg';
+import profileImg from '../../assets/img/ian-pogi.jpg';
 
 const Order = ({ account, normalAccount }) => {
   useEffect(() => {
