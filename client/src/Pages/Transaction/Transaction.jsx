@@ -114,7 +114,7 @@ const Transaction = () => {
           </form>
           <span className="profile-name">Argie</span>
           <a href="#" className="profile">
-            <img src={profileImage} />
+            <img alt='profileImage' />
           </a>
         </nav>
         {/* NAVBAR */}
