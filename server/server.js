@@ -42,7 +42,8 @@ app.use(passportSetup.session());
 
 // Middleware setup
 app.use(cors({
-    origin: '*',
+    origin: ["http://localhost:5173", "https://versatily.website"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
 app.use(express.json());
