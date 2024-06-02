@@ -219,8 +219,8 @@ const Order = ({ account, normalAccount }) => {
           { ...product, quantity: initialQuantity },
         ]);
       } else {
-        toast.warning(
-          `You cannot add this product to the cart as it exceeds the maximum quantity (${product.quantity}).`,
+        toast.error(
+          'This product is currently disabled and cannot be added to the cart.',
           toastConfig,
         );
         return;
