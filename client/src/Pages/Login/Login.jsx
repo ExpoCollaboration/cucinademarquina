@@ -110,7 +110,7 @@ const Login = () => {
               </Link>
               <h2>Log In</h2>
 
-              <div className="form">
+              <form className="form">
                 <div className="inputBox">
                   <input
                     type="text"
@@ -175,7 +175,7 @@ const Login = () => {
                     <div className="google-login">Continue with Google</div>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
