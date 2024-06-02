@@ -41,13 +41,7 @@ app.use(passportSetup.initialize());
 app.use(passportSetup.session());
 
 // Middleware setup
-app.use(cors(
-    {
-        origin: ["http://localhost:5173", "https://versatily.website"],
-        methods: "GET,POST,PUT,DELETE",
-        credentials: true,
-    }
-));
+app.use(cors());
 app.use(express.json());
 app.use(express.static("public")); // Serve static files from 'public' directory
 app.use(fileUpload({ createParentPath: true })); // File upload middleware
