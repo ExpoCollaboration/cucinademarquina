@@ -113,8 +113,12 @@ const Product = () => {
   const getProducts = async () => {
     try {
       const response = await axios.get(`${API_URL}/products`);
-      setProducts(response.data);
-      setFilteredProducts(response.data);
+      const productsData = response.data.map((product) => {
+        // Check if the quantity of the product is 0
+        return { ...product, outOfStock: product.quantity === 0 };
+      });
+      setProducts(productsData);
+      setFilteredProducts(productsData);
     } catch (error) {
       console.error('Error fetching the products', error);
     }
@@ -427,7 +431,9 @@ const Product = () => {
                           />
                           <p className="text-paragraph">{product.name}</p>
                         </td>
-                        <td>{product.outOfStock ? 'Disabled' : 'Available'}</td>
+                        <td className={`container-status ${product.outOfStock ? 'outStock' : 'onstock'}`}>
+                          <p>{product.outOfStock ? 'Disabled' : 'Available'}</p>
+                        </td>
                         <td>{product.category}</td>
                         <td>{product.price}</td>
                         <td>{product.quantity}</td>
