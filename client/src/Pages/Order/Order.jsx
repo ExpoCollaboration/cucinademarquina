@@ -13,6 +13,35 @@ const Order = ({ account, normalAccount }) => {
     document.title = 'Ordering';
   }, []);
 
+  const [loggedInAccount, setLoggedInAccount] = useState(null);
+
+  const getUsernameForData = async () => {
+    if(normalAccount === null) {
+      console.log('Normal Account is not fetching yet, need to reload');
+      location.reload();
+    }
+
+    const normalAccount_email = normalAccount.email;
+    console.log('User email: ', normalAccount_email);
+
+    try {
+      const response = await axios.get(`${API_URL}/account/${normalAccount_email}`);
+      setLoggedInAccount(response.data);
+    } catch (error) {
+      if (error.response) {
+        console.error('Error response:', error.response);
+      } else if (error.request) {
+        console.error('Error request:', error.request);
+      } else {
+        console.error('Error message:', error.message);
+      }
+    }
+  };
+
+  useEffect(() => {
+    getUsernameForData();
+  }, [normalAccount]);
+
   // Fetch Google Account
   try {
     if (account) {
@@ -99,37 +128,6 @@ const Order = ({ account, normalAccount }) => {
       ),
     );
   };
-
-
-  const [loggedInAccount, setloggedInAccount] = useState(null);
-
-  useEffect(() => {
-    const getUsernameForData = async () => {
-      if (!normalAccount || !normalAccount.email) {
-        console.error('Normal account or email is not defined');
-        return;
-      }
-
-      const normalAccount_email = normalAccount.email;
-      console.log('User email: ', normalAccount_email);
-
-      try {
-        const response = await axios.get(`${API_URL}/account/${normalAccount_email}`);
-        setloggedInAccount(response.data);
-        console.log(loggedInAccount);
-      } catch (error) {
-        if (error.response) {
-          console.error('Error response:', error.response);
-        } else if (error.request) {
-          console.error('Error request:', error.request);
-        } else {
-          console.error('Error message:', error.message);
-        }
-      }
-    };
-
-    getUsernameForData();
-  }, [normalAccount]);
 
   useEffect(() => {
     getAllProducts();
