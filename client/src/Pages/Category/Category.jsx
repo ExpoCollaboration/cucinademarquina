@@ -9,6 +9,34 @@ import { API_URL } from '../../config.js';
 const Category = ({normalAccount, account}) => {
 
   const navigate = useNavigate();
+
+  const [googleEmail, setGoogleEmail] = useState(null);
+
+  useEffect(() => {
+    if(googleEmail && googleEmail !== 'web.versatily@gmail.com') {
+      navigate('/forbidden');
+    } else {
+      console.log('Email', googleEmail || 'not defined yet');
+    }
+  }, [googleEmail, navigate]);
+
+  useEffect(() => {
+    // eslint-disable-next-line require-await
+    const getEmailGoogleData = async () => {
+      if(!account || !account.profile.emails[0].value) {
+        console.error('Normal account or email is not defined');
+        return;
+      }
+
+      const GoogleAccountEmail = account.profile.emails[0].value;
+      setGoogleEmail(GoogleAccountEmail);
+      console.log('Email', googleEmail);
+
+    };
+
+    getEmailGoogleData();
+  }, [account]);
+
   const [role, setRole] = useState(null);
   const [loggedInAccount, setLoggedInAccount] = useState(null);
 
