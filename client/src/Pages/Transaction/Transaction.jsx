@@ -5,7 +5,7 @@ import axios from 'axios';
 import Logo from '../../assets/Icons/cucina-de-marquina-logo.png';
 import {API_URL} from '../../config.js';
 
-const Transaction = ({normalAccount}) => {
+const Transaction = ({normalAccount, account}) => {
 
   const navigate = useNavigate();
   const [role, setRole] = useState(null);
@@ -91,6 +91,31 @@ const Transaction = ({normalAccount}) => {
     return date.toLocaleDateString('en-US', options);
   };
 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('click', handleClickOutside);
+    return () => {
+      window.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
+  const handleClickOutside = (event) => {
+    if (!event.target.closest('.profile-name')) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.open(`${API_URL}/auth/logout`, '_self');
+    navigate('/login');
+  };
+
   return (
     <>
       {/* SIDEBAR */}
@@ -157,10 +182,37 @@ const Transaction = ({normalAccount}) => {
               </button>
             </div>
           </form>
-          <span className="profile-name">Argie</span>
-          <a href="#" className="profile">
-            <img alt='profileImage' />
-          </a>
+          <div className="container-logut-drop-down" onClick={toggleDropdown}>
+            <div className="profile-name">
+              <div className="profile-content-icon">
+                {account && account.profile && account.profile.photos && account.profile.photos.length > 0 ? (
+                  <img src={account.profile.photos[0].value} width={35} height={35} />
+                ) : (
+                  <i id='icon' className='bx bx-user'></i>
+                )}
+              </div>
+              <div className="profile-content-name">
+                {loggedInAccount && loggedInAccount.account_username ? loggedInAccount.account_username : (account && account.profile && account.profile.displayName ? account.profile.displayName : '')}
+              </div>
+              <div className="profile-content-drop-down-menu">
+                <i
+                  className={`bx bx-chevron-down ${
+                    isDropdownOpen ? 'rotate' : ''
+                  }`}
+                ></i>{' '}
+              </div>
+            </div>
+            {isDropdownOpen && (
+              <div className="dropdown-content">
+                <Link to={'/account'}>
+                  <i className="bx bx-user"></i>Profile
+                </Link>
+                <Link to={'/login'} onClick={handleLogout}>
+                  <i className="bx bx-log-out"></i>Logout
+                </Link>
+              </div>
+            )}
+          </div>
         </nav>
         {/* NAVBAR */}
 

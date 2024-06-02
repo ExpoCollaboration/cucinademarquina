@@ -163,7 +163,7 @@ body {
 
 /* NAVBAR */
 #content nav {
-  height: 56px;
+  height: 80px;
   background: var(--light);
   padding: 0 24px;
   display: flex;
