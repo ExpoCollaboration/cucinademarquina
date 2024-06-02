@@ -23,7 +23,7 @@ const CartSidebar = ({googleAccount, accounts, cartItems, removeFromCart, isOpen
   console.log('---------------------');
   console.log('Account Email Check', accounts.accountEmail);
 
-  const toastConfig = {
+  const toastConfig = { 
     position: 'top-right',
     autoClose: 5000,
     hideProgressBar: false,
@@ -92,6 +92,16 @@ const CartSidebar = ({googleAccount, accounts, cartItems, removeFromCart, isOpen
             'Content-Type': 'application/json',
           },
         });
+
+        try {
+          await axios.post(`${API_URL}/orders/update-inventory`, {
+            cartItems: itemData,
+          });
+        
+          console.log('Updated cart items:', itemData);
+        } catch (error) {
+          console.error('Error updating inventory:', error);
+        }
         
       } catch (error) {
         console.error('Error making POST request:', error);

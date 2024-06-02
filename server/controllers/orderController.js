@@ -1,7 +1,7 @@
 // Define routes to use the controller functions
 import Transaction from '../models/transactionModel.js'; 
 import Item from '../models/itemModel.js';
-
+import Product from '../models/productModel.js';
 
 // Controller function to get all orders
 export const getAllOrders = async (req, res) => {
@@ -80,3 +80,26 @@ export const saveTransactionAndItems = async (req, res) => {
         return res.status(500).json({ error: 'Failed to save transaction and items.', details: error.message });
     }
 };
+
+export const updateInventory = async (req, res) => {
+    const { cartItems } = req.body;
+
+    try {
+        await Promise.all(cartItems.map(async (item) => {
+            const product = await Product.findOne({ where: { name: item.name } });
+            if (!product) {
+                console.error(`Product with name ${item.name} not found.`);
+                throw new Error('Product not found');
+            }
+
+            product.quantity -= item.quantity;
+
+            await product.save();
+        }));
+
+        res.status(200).json("Product inventory updated successfully");
+    } catch (error) {
+        console.error('Error updating inventory:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}
