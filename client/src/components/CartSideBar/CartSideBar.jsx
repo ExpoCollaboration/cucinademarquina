@@ -52,6 +52,18 @@ const CartSidebar = ({googleAccount, accounts, cartItems, removeFromCart, isOpen
     return orderId;
   };
 
+  const blurEmail = (email) => {
+    const [username, domain] = email.split('@');
+    const blurredUsername = username.substring(0, Math.ceil(username.length / 2)).padEnd(username.length, '*');
+    return `${blurredUsername}@${domain}`;
+  };
+
+  const emailText = accounts.accountEmail
+    ? blurEmail(accounts.accountEmail)
+    : googleAccount.googleAccountEmail
+      ? blurEmail(googleAccount.googleAccountEmail)
+      : '';
+
   const generatePDFAndSaveData = async () => {
     try {
       if (cartItems.length === 0) {
@@ -132,14 +144,14 @@ const CartSidebar = ({googleAccount, accounts, cartItems, removeFromCart, isOpen
 
       Swal.fire({
         title: 'Thank You for Your Order',
-        text: 'Your order is now reserved.',
+        text: `Your order has been successfully reserved. Please check your Gmail account for further details${emailText ? `, using the email ${emailText}` : '.'}`,
         icon: 'success',
       }).then((result) => {
         if (result.isConfirmed) {
           window.location.reload();
         }
-      });
-
+      });     
+      
       navigate('/orders');
     } catch (error) {
       console.error('Error:', error);
