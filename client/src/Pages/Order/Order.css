@@ -179,10 +179,9 @@
 /* Main */
 
 .order-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   padding: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
 }
 
 .text-order-container {
@@ -266,8 +265,6 @@
 
 .order-container .product-row {
   background-color: var(--white);
-  max-width: 350px;
-  min-width: 350px;
   border: solid 1px #d9d9d9;
   align-items: center;
   font-family: var(--poppins), sans-serif;
@@ -468,7 +465,8 @@
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 389px) {
+
   .header-hero h1 {
     font-size: 1rem;
   }
