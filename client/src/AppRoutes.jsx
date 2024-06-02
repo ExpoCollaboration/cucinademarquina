@@ -94,9 +94,9 @@ function AppRoutes() {
           />
 
           {/* Manager */}
-          <Route path="/products" element={isManager ? <Product /> : <Navigate to='/forbidden' />} />
-          <Route path="/categories" element={isManager ? <Category /> : <Navigate to='/forbidden' />} />
-          <Route path="/transactions" element={isManager ? <Transaction /> : <Navigate to='/forbidden' />} />
+          <Route path="/products" element={isManager ? <Product normalAccount={normalAccount} /> : <Navigate to='/forbidden' />} />
+          <Route path="/categories" element={isManager ? <Category normalAccount={normalAccount} /> : <Navigate to='/forbidden' />} />
+          <Route path="/transactions" element={isManager ? <Transaction normalAccount={normalAccount} /> : <Navigate to='/forbidden' />} />
           <Route path="/receipt/:id" element={isManager ? <Receipt /> : <Navigate to='/forbidden' />} />
 
           {/* Customer */}

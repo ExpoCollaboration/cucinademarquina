@@ -1,5 +1,5 @@
 import './Product.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,7 +7,50 @@ import axios from 'axios';
 import Logo from '../../assets/Icons/cucina-de-marquina-logo.png';
 import { API_URL } from '../../config.js';
 
-const Product = () => {
+const Product = ({normalAccount}) => {
+  const navigate = useNavigate();
+  const [role, setRole] = useState(null);
+  const [loggedInAccount, setLoggedInAccount] = useState(null);
+
+  useEffect(() => {
+    if (role && role !== 'Admin') {
+      navigate('/forbidden');
+    } else {
+      console.log('Role:', role || 'not defined yet');
+    }
+  }, [role, navigate]);
+
+  useEffect(() => {
+    const getUsernameForData = async () => {
+      if (!normalAccount || !normalAccount.email) {
+        console.error('Normal account or email is not defined');
+        return;
+      }
+
+      const normalAccount_email = normalAccount.email;
+      console.log('User email:', normalAccount_email);
+
+      try {
+        const response = await axios.get(`${API_URL}/account/${normalAccount_email}`);
+        setLoggedInAccount(response.data);
+        console.log('here is the account details', loggedInAccount);
+        const createdBy = response.data.createdBy;
+        setRole(createdBy);
+        console.log('Role:', createdBy);
+      } catch (error) {
+        if (error.response) {
+          console.error('Error response:', error.response);
+        } else if (error.request) {
+          console.error('Error request:', error.request);
+        } else {
+          console.error('Error message:', error.message);
+        }
+      }
+    };
+
+    getUsernameForData();
+  }, [normalAccount]);
+
   // State
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
