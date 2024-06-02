@@ -91,7 +91,7 @@ const Register = () => {
               </Link>
               <h2>Sign Up</h2>
 
-              <div className="form" onSubmit={handleSubmit}>
+              <form className="form" onSubmit={handleSubmit}>
                 <div className="inputBox">
                   <input
                     type="text"
@@ -189,7 +189,6 @@ const Register = () => {
 
                 <div className="inputBox">
                   <input
-                    onClick={handleSubmit}
                     type="submit"
                     value="Register"
                   />
@@ -199,7 +198,7 @@ const Register = () => {
                   Already have an account?
                   <Link to={'/login'}> login here</Link>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
