@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import { v4 as uuidv4 } from 'uuid';
 import { API_URL } from '../../config';
+import QRCode from '../../assets/QRCode/qr-code-feedback.png';
 
 const CartSidebar = ({googleAccount, accounts, cartItems, removeFromCart, isOpen, setIsOpen }) => {
   const navigate = useNavigate();
@@ -254,19 +255,19 @@ const CartSidebar = ({googleAccount, accounts, cartItems, removeFromCart, isOpen
 
     posY += 25;
 
-    const qrCodeImageWidth = 50; // Adjust width as needed
-    // const qrCodeImageHeight = 50; // Adjust height as needed
+    const qrCodeImageWidth = 50;
+    const qrCodeImageHeight = 50;
     const qrCodeText =
       'Scan the QR Code!\nYour feedbacks will greatly\nbe appreciated';
 
     // Calculate positions
-    const qrCodeImageX = 10; // Adjust X coordinate as needed
-    const qrCodeImageY = posY; // Adjust Y coordinate as needed
-    const qrCodeTextX = qrCodeImageX + qrCodeImageWidth + 20; // Adjust X coordinate as needed
-    const qrCodeTextY = qrCodeImageY; // Adjust Y coordinate as needed
+    const qrCodeImageX = 35; // Adjust X coordinate as needed
+    const qrCodeImageY = 250; // Adjust Y coordinate as needed
+    const qrCodeTextX = qrCodeImageX + qrCodeImageWidth + 15; // Adjust X coordinate as needed
+    const qrCodeTextY = 260; // Adjust Y coordinate as needed
 
-    // Add QR code image
-    // doc.addImage(qrcode, 'PNG', qrCodeImageX, qrCodeImageY, qrCodeImageWidth, qrCodeImageHeight);
+    // Add QR code image  
+    doc.addImage(QRCode, 'png', qrCodeImageX, qrCodeImageY, qrCodeImageWidth, qrCodeImageHeight);
 
     // Add text
     doc.setFontSize(8);
