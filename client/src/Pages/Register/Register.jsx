@@ -22,7 +22,7 @@ const Register = () => {
   });
 
   const toastConfig = {
-    position: 'top-right',
+    position: 'top-center',
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -38,24 +38,38 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Simple form validation
+    if (!formData.account_username || !formData.account_email || !formData.account_password || !formData.account_firstName || !formData.account_lastName || !verifyPassowrd) {
+      toast.error('Please fill in all fields.', toastConfig);
+      return;
+    }
+
+    if (formData.account_password !== verifyPassowrd) {
+      toast.error('Passwords do not match.', toastConfig);
+      return;
+    }
+
     try {
-      if (verifyPassowrd == formData.account_password) {
-        const response = await axios.post(
-          `${API_URL}/register`,
-          formData,
-        );
-        toast.success('Successfully register user', toastConfig);
-        setTimeout(() => {
-          Navigate('/login');
-        }, 2100);
-        console.log(response.data);
-      } else if (formData.account_password !== verifyPassowrd) {
-        toast.error('passoword does not match?', toastConfig);
-      } else {
-        toast.error('What\'s happening! I Don\'t Know Too');
-      }
+      const response = await axios.post(
+        `${API_URL}/register`,
+        formData,
+      );
+      toast.success('Successfully registered user', toastConfig);
+      setTimeout(() => {
+        Navigate('/login');
+      }, 2100);
+      console.log(response.data);
     } catch (error) {
-      console.log('Error registrating users', error);
+      if (error.response) {
+        toast.error(error.response.data.message || 'Error registering user', toastConfig);
+      } else if (error.request) {
+        // The request was made but no response was received
+        toast.error('No response from server. Please try again later.', toastConfig);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        toast.error('An error occurred. Please try again later.', toastConfig);
+      }
+      console.error('Error registering user:', error);
     }
   };
 

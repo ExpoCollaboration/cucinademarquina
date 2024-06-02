@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -9,7 +10,7 @@ import { API_URL } from '../../config.js';
 
 const Login = () => {
   const toastConfig = {
-    position: 'top-right',
+    position: 'top-center',
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -27,6 +28,7 @@ const Login = () => {
   });
 
   const [rememberMe, setRememberMe] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   useEffect(() => {
     const storedEmailOrUsername = localStorage.getItem('emailOrUsername');
@@ -51,10 +53,7 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post(
-        `${API_URL}/login`,
-        loginformData,
-      );
+      const response = await axios.post(`${API_URL}/login`, loginformData);
       const { message, token } = response.data;
       console.log(message, token);
 
@@ -68,19 +67,18 @@ const Login = () => {
         localStorage.removeItem('emailOrUsername');
       }
 
-      toast.success(
-        'Successfully logged in! Redirecting to order pages',
-        toastConfig,
-      );
+      toast.success('Successfully logged in! Redirecting to order pages', toastConfig);
       setTimeout(() => {
         navigate('/orders');
       }, 2000);
     } catch (error) {
-      toast.error('Login failed: ' + error.response.data.message, toastConfig);
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error('Login failed: ' + error.response.data.message, toastConfig);
+      } else {
+        toast.error('An error occurred while logging in. Please try again.', toastConfig);
+      }
     }
   };
-
-  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const togglePassword = () => {
     setPasswordVisible(!passwordVisible);
@@ -96,16 +94,9 @@ const Login = () => {
         <div className="login-form">
           <div className="signin">
             <div className="content">
-              <Link
-                to={'https://www.facebook.com/CucinaDeMarquina?mibextid=ZbWKwL'}
-              >
+              <Link to={'https://www.facebook.com/CucinaDeMarquina?mibextid=ZbWKwL'}>
                 <div className="container-logo">
-                  <img
-                    src={CucinaDeMarquina}
-                    alt={CucinaDeMarquina}
-                    width={150}
-                    height={150}
-                  />
+                  <img src={CucinaDeMarquina} alt={CucinaDeMarquina} width={150} height={150} />
                 </div>
               </Link>
               <h2>Log In</h2>
@@ -118,8 +109,8 @@ const Login = () => {
                     name="emailOrUsername"
                     value={loginformData.emailOrUsername}
                     onChange={handleChange}
-                  />{' '}
-                  <i className='no-event'>Username</i>
+                  />
+                  <i className="no-event">Username</i>
                 </div>
 
                 <div className="inputBox">
@@ -130,14 +121,9 @@ const Login = () => {
                     onChange={handleChange}
                     required
                   />
-                  <i className='no-event'>Password</i>
-                  <span className="show-password">
-                    <i
-                      className={`bx ${
-                        passwordVisible ? 'bx-low-vision' : 'bx-show'
-                      }`}
-                      onClick={togglePassword}
-                    ></i>
+                  <i className="no-event">Password</i>
+                  <span className="show-password" onClick={togglePassword}>
+                    <i className={`bx ${passwordVisible ? 'bx-low-vision' : 'bx-show'}`}></i>
                   </span>
                 </div>
 
@@ -159,7 +145,7 @@ const Login = () => {
                 </div>
 
                 <div className="links-register">
-                  Dont have an account?
+                  Don't have an account?
                   <Link to={'/register'}> register here</Link>
                 </div>
                 <div className="break">
